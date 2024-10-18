@@ -15,12 +15,12 @@
 
         #message {
             text-align: center;
-            width: 600px;
+            max-width: 600px;
             margin: 0 auto 20px;
-            padding: 20px;
+            padding: 2vw;
             border: 5px solid #4caf50;
             background-color: #e0ffe0;
-            font-size: 1.5em;
+            font-size: 2vw;
             border-radius: 15px;
         }
 
@@ -37,12 +37,12 @@
         .image-container {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
+            gap: 20px;
             justify-content: center;
         }
 
         .preview {
-            width: 80%;
+            width: 100%;
             border: 5px solid #ff5722;
             border-radius: 10px;
             box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
@@ -138,6 +138,7 @@
     </div>
     <footer>&copy; 2024 Images.</footer>
 
+
     <div id="lightbox1" class="lightbox"><a href="#lightbox9" class="prev">&#10094;</a><img src="pictures/beautifulsunset.jpg" alt="Beautiful sunset"><a href="#lightbox2" class="next">&#10095;</a><a href="#" class="close">&times;</a></div>
     <div id="lightbox2" class="lightbox"><a href="#lightbox1" class="prev">&#10094;</a><img src="pictures/mountainwiev.jpg" alt="Mountain view"><a href="#lightbox3" class="next">&#10095;</a><a href="#" class="close">&times;</a></div>
     <div id="lightbox3" class="lightbox"><a href="#lightbox2" class="prev">&#10094;</a><img src="pictures/calmocean.jpg" alt="Calm ocean"><a href="#lightbox4" class="next">&#10095;</a><a href="#" class="close">&times;</a></div>
@@ -149,7 +150,6 @@
     <div id="lightbox9" class="lightbox"><a href="#lightbox8" class="prev">&#10094;</a><img src="pictures/countrysidefield.jpg" alt="Countryside field"><a href="#lightbox1" class="next">&#10095;</a><a href="#" class="close">&times;</a></div>
 
     <script>
-        
         function shuffleImages() {
             const imageContainer = document.getElementById('imageContainer');
             const images = Array.from(imageContainer.children);
