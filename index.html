@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery with Lightbox</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(to bottom right, #f0f8ff, #e6e6fa);
+            font-family: 'Arial', sans-serif;
+            color: #333;
+        }
+
+        #message {
+            text-align: center;
+            width: 600px;
+            margin: 0 auto 20px;
+            padding: 20px;
+            border: 5px solid #4caf50;
+            background-color: #e0ffe0;
+            font-size: 1.5em;
+            border-radius: 15px;
+        }
+
+        #largeImage {
+            width: 100%;
+            height: 400px;
+            border: 2px solid #ff5722;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .image-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            justify-content: center;
+        }
+
+        .preview {
+            width: 80%;
+            border: 5px solid #ff5722;
+            border-radius: 10px;
+            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .preview:hover, .preview:focus {
+            transform: scale(1.05);
+            border-color: #4caf50;
+        }
+
+        img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 12px;
+            color: #555;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 10;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10px;
+        }
+
+        .lightbox:target {
+            display: flex;
+        }
+
+        .close, .prev, .next {
+            position: absolute;
+            top: 50%;
+            padding: 16px;
+            color: white;
+            font-weight: bold;
+            font-size: 30px;
+            transition: 0.3s;
+            user-select: none;
+        }
+
+        .close {
+            right: 40px;
+            top: 20px;
+        }
+
+        .prev {
+            left: 20px;
+        }
+
+        .next {
+            right: 20px;
+        }
+
+        .prev:hover, .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+    </style>
+</head>
+<body>
+    <div id="message">Hover over an image to display the alt text.</div>
+    <div id="largeImage"></div>
+    <div id="imageContainer" class="image-container">
+        <a href="#lightbox1"><img class="preview" alt="Beautiful sunset" src="pictures/beautifulsunset.jpg" tabindex="0"></a>
+        <a href="#lightbox2"><img class="preview" alt="Mountain view" src="pictures/mountainwiev.jpg" tabindex="0"></a>
+        <a href="#lightbox3"><img class="preview" alt="Calm ocean" src="pictures/calmocean.jpg" tabindex="0"></a>
+        <a href="#lightbox4"><img class="preview" alt="Forest trail" src="pictures/foresttrail.jpg" tabindex="0"></a>
+        <a href="#lightbox5"><img class="preview" alt="City skyline" src="pictures/cityskyline.jpg" tabindex="0"></a>
+        <a href="#lightbox6"><img class="preview" alt="Desert landscape" src="pictures/desertlandscape.jpg" tabindex="0"></a>
+        <a href="#lightbox7"><img class="preview" alt="Winter forest" src="pictures/winterforest.jpg" tabindex="0"></a>
+        <a href="#lightbox8"><img class="preview" alt="Sunny beach" src="pictures/sunnybeach.jpg" tabindex="0"></a>
+        <a href="#lightbox9"><img class="preview" alt="Countryside field" src="pictures/countrysidefield.jpg" tabindex="0"></a>
+    </div>
+    <footer>&copy; 2024 Images.</footer>
+
+    <div id="lightbox1" class="lightbox"><a href="#lightbox9" class="prev">&#10094;</a><img src="pictures/beautifulsunset.jpg" alt="Beautiful sunset"><a href="#lightbox2" class="next">&#10095;</a><a href="#" class="close">&times;</a></div>
+    <div id="lightbox2" class="lightbox"><a href="#lightbox1" class="prev">&#10094;</a><img src="pictures/mountainwiev.jpg" alt="Mountain view"><a href="#lightbox3" class="next">&#10095;</a><a href="#" class="close">&times;</a></div>
+    <div id="lightbox3" class="lightbox"><a href="#lightbox2" class="prev">&#10094;</a><img src="pictures/calmocean.jpg" alt="Calm ocean"><a href="#lightbox4" class="next">&#10095;</a><a href="#" class="close">&times;</a></div>
+    <div id="lightbox4" class="lightbox"><a href="#lightbox3" class="prev">&#10094;</a><img src="pictures/foresttrail.jpg" alt="Forest trail"><a href="#lightbox5" class="next">&#10095;</a><a href="#" class="close">&times;</a></div>
+    <div id="lightbox5" class="lightbox"><a href="#lightbox4" class="prev">&#10094;</a><img src="pictures/cityskyline.jpg" alt="City skyline"><a href="#lightbox6" class="next">&#10095;</a><a href="#" class="close">&times;</a></div>
+    <div id="lightbox6" class="lightbox"><a href="#lightbox5" class="prev">&#10094;</a><img src="pictures/desertlandscape.jpg" alt="Desert landscape"><a href="#lightbox7" class="next">&#10095;</a><a href="#" class="close">&times;</a></div>
+    <div id="lightbox7" class="lightbox"><a href="#lightbox6" class="prev">&#10094;</a><img src="pictures/winterforest.jpg" alt="Winter forest"><a href="#lightbox8" class="next">&#10095;</a><a href="#" class="close">&times;</a></div>
+    <div id="lightbox8" class="lightbox"><a href="#lightbox7" class="prev">&#10094;</a><img src="pictures/sunnybeach.jpg" alt="Sunny beach"><a href="#lightbox9" class="next">&#10095;</a><a href="#" class="close">&times;</a></div>
+    <div id="lightbox9" class="lightbox"><a href="#lightbox8" class="prev">&#10094;</a><img src="pictures/countrysidefield.jpg" alt="Countryside field"><a href="#lightbox1" class="next">&#10095;</a><a href="#" class="close">&times;</a></div>
+
+    <script>
+        
+        function shuffleImages() {
+            const imageContainer = document.getElementById('imageContainer');
+            const images = Array.from(imageContainer.children);
+            for (let i = images.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [images[i], images[j]] = [images[j], images[i]];
+            }
+            imageContainer.innerHTML = '';
+            images.forEach(image => imageContainer.appendChild(image));
+        }
+
+        window.onload = function() {
+            shuffleImages();
+        };
+
+        function updateLargeImage(element) {
+            document.getElementById('message').innerHTML = element.alt;
+            document.getElementById('largeImage').style.backgroundImage = `url('${element.src}')`;
+        }
+
+        document.querySelectorAll('.preview').forEach(image => {
+            image.addEventListener('mouseover', () => updateLargeImage(image));
+            image.addEventListener('mouseleave', () => resetLargeImage());
+        });
+
+        function resetLargeImage() {
+            document.getElementById('message').innerHTML = "Hover over an image to display the alt text.";
+            document.getElementById('largeImage').style.backgroundImage = "url('')";
+        }
+    </script>
+</body>
+</html>
